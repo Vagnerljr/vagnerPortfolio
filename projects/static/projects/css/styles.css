@@ -93,6 +93,7 @@ p{ color: var(--muted); }
   max-width: 860px;
   display: grid;
   gap: 16px;
+  
 }
 
 .kicker{
@@ -248,8 +249,8 @@ p{ color: var(--muted); }
 }
 
 .icon-img{
-  width: 12px;
-  height: 12px;
+  width: 30px;
+  height: 30px;
   display:block;
   opacity: .9;
 }
