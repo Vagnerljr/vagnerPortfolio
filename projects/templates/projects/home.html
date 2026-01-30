@@ -1,0 +1,150 @@
+{% extends "projects/base.html" %}
+
+{% block title %}Vagner Junior — Portfolio{% endblock title %}
+
+{% block content %}
+
+<section class="hero">
+  <div class="container hero-inner">
+    <p class="kicker">Real projects built for the real world.</p>
+
+    <h1>
+      Backend-focused developer building end-to-end web applications —
+      from database design to deployment.
+    </h1>
+
+    <p class="hero-text">
+      I enjoy solving real-world problems with simple, well-structured solutions.
+      Minimal UI, strong foundations, clean delivery.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn" href="#projects">See Projects</a>
+      <a class="btn ghost" href="#contact">Contact</a>
+    </div>
+
+    
+  </div>
+</section>
+
+
+<section id="projects" class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <p>Selected work — apps, APIs, and end-to-end builds.</p>
+    </div>
+
+    <div class="cards">
+      {% for project in projects %}
+        <article class="card">
+          <div class="card-top">
+            <h3 class="card-title">{{ project.title }}</h3>
+
+            <div class="card-actions">
+              {% if project.link %}
+                <a class="icon-link" href="{{ project.link }}" target="_blank" rel="noopener"
+                   title="Open app" aria-label="Open app">
+                  <img class="icon-img"
+                       src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/external-link.svg"
+                       alt="">
+                </a>
+              {% endif %}
+
+              {% if project.code %}
+                <a class="icon-link" href="{{ project.code }}" target="_blank" rel="noopener"
+                   title="View code on GitHub" aria-label="View code on GitHub">
+                  <img class="icon-img"
+                       src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/github-light.svg"
+                       alt="">
+                </a>
+              {% endif %}
+            </div>
+          </div>
+
+          <p class="card-desc">{{ project.description }}</p>
+
+          {# Tecnologias (opcional) #}
+          {% if project.technologies.all %}
+            <div class="tags">
+              {% for tech in project.technologies.all %}
+                <span>{{ tech.name }}</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </article>
+      {% empty %}
+        <p class="empty">No projects yet. Add your first project in the admin.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>Skills & Now</h2>
+      <p>What I use daily, and what I’m improving right now.</p>
+    </div>
+
+    <div class="grid-2">
+      <article class="panel">
+        <h3>Core skills</h3>
+        <ul class="list">
+          <li><strong>Backend:</strong> Django, REST, auth, background jobs</li>
+          <li><strong>Data:</strong> PostgreSQL, modeling, migrations, performance basics</li>
+          <li><strong>Delivery:</strong> Docker, Linux, deploy pipelines, observability basics</li>
+          <li><strong>Quality:</strong> clean code, testing mindset, maintainable architecture</li>
+        </ul>
+      </article>
+
+      <article class="panel">
+        <h3>Currently studying</h3>
+        <ul class="list">
+          <li>Advanced Django patterns (services, boundaries, scaling)</li>
+          <li>Async & queues (Celery/RQ concepts)</li>
+          <li>System design fundamentals for web apps</li>
+          <li>Better DX and front-end polish (minimal UI, accessibility)</li>
+        </ul>
+        <div class="mini">
+          <span class="pill subtle">Learning mode: consistent daily progress</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section contact">
+  <div class="container">
+    <div class="section-head">
+      <h2>Contact</h2>
+      <p>Let’s talk about opportunities, freelance work, or collaborations.</p>
+    </div>
+
+    <div class="contact-card">
+      <div class="contact-row">
+        <span class="label">Email</span>
+        <a class="value" href="mailto:youremail@example.com">vagnerleandrojr@gmail.com</a>
+      </div>
+
+      <div class="contact-row">
+        <span class="label">LinkedIn</span>
+        <a class="value" href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener">
+          linkedin.com/in/yourprofile
+        </a>
+      </div>
+
+      <div class="contact-row">
+        <span class="label">GitHub</span>
+        <a class="value" href="https://github.com/youruser" target="_blank" rel="noopener">
+          github.com/Vagnerljr
+        </a>
+      </div>
+    </div>
+
+    <p class="small-note">
+      Prefer a quick message? Email is the fastest way.
+    </p>
+  </div>
+</section>
+{% endblock content %}
